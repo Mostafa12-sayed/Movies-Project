@@ -1,0 +1,35 @@
+<div class=" p-4 ">
+  <app-search-bar></app-search-bar>
+</div>
+
+<h4 class="px-4">Now Playing</h4>
+<div class="d-flex flex-wrap justify-content-center gap-3 p-4">
+  <app-movie-card
+    *ngFor="let movie of movies"
+    [movie]="movie">
+  </app-movie-card>
+</div>
+
+<!-- Pagination -->
+<nav>
+  <ul class="pagination justify-content-center">
+    <li class="page-item">
+      <button class="page-link" (click)="prevPage()" [disabled]="currentPage === 1">&lt;</button>
+    </li>
+
+    <li *ngFor="let page of pages" class="page-item" [class.active]="page === currentPage">
+      <a class="page-link" (click)="goToPage(page)">{{ page }}</a>
+    </li>
+
+    <li class="page-item">
+      <button class="page-link" (click)="nextPage()" [disabled]="currentPage === totalPages">&gt;</button>
+    </li>
+  </ul>
+</nav>
+
+
+  <!-- <div class="pagination">
+    <button (click)="prevPage()" [disabled]="currentPage === 1">Prev</button>
+    <span>Page {{ currentPage }} of {{ totalPages }}</span>
+    <button (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
+  </div> -->
