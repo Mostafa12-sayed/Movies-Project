@@ -34,7 +34,13 @@ export class MovieCardComponent {
       title: this.movie.title,
       releaseDate: this.movie.releaseDate,
       image: this.movie.image,
-      rating: this.movie.rating
+      rating: this.movie.rating,
+      overview: this.movie.overview,
+      vote_count: this.movie.vote_count,
+      vote_average: this.movie.vote_average,
+
     });
+    console.log(this.movie.isFavorite);
+
   }
 }

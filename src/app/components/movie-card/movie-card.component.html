@@ -1,11 +1,16 @@
 <div class="movie-card">
   <div class="poster"  [routerLink]="'/movie/' + movie.id">
-    <img [src]="movie.image" [alt]="movie.title" />
+    @if(movie.image == null || movie.image == '') 
+    {
+      <h3 class="text-cnter">No Image</h3>
+    } @else {
+      <img [src]="movie.image" [alt]="movie.title" />
+    }
     <div class="rating">{{ (movie.rating).toFixed(1) }}%</div>
     <div class="options">•••</div>
   </div>
 
-  <div class="movie-info d-flex justify-content-between align-items-center">
+  <div class="movie-info d-flex justify-content-between align-items-center p-3">
     <div>
       <h5>{{ movie.title }}</h5>
       <p>{{ movie.releaseDate  }}</p>

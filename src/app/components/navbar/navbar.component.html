@@ -18,7 +18,7 @@
       <a  routerLink="/watchlist">
       <div class="watchlist d-flex align-items-center" >
         <i class="fa fa-heart text-dark me-1" style="font-size: 18px;"></i>
-        <span class="fw-semibold">watchlist</span>
+        <span class="fw-semibold">watchlist @if(count> 0 ){<span class="badge badge-secondary">{{count}}</span>}</span>
       </div>
     </a>
     </div>

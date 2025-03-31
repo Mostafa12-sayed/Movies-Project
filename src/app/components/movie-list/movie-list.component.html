@@ -3,7 +3,7 @@
 </div>
 
 <h4 class="px-4">Now Playing</h4>
-<div class="d-flex flex-wrap justify-content-center gap-3">
+<div class="d-flex flex-wrap justify-content-center gap-3 mt-5">
   <app-movie-card
     *ngFor="let movie of movies"
     [movie]="movie">
@@ -33,9 +33,3 @@
   </ul>
 </nav>
 
-
-  <!-- <div class="pagination">
-    <button (click)="prevPage()" [disabled]="currentPage === 1">Prev</button>
-    <span>Page {{ currentPage }} of {{ totalPages }}</span>
-    <button (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
-  </div> -->
