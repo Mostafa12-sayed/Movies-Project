@@ -8,24 +8,30 @@
     </div>
   }
   @else {
-    <div class="movie-list">
-      <div *ngFor="let movie of movies" class="movie-card">
-        <div class="card position-relative" style="max-width: 18rem;">
-          <a [routerLink]="'/movie/' + movie.id">
-            <img [src]="movie.image" [alt]="movie.title" class="card-img-top">
-          </a>
-          <div class="card-body">
-            <h5 class="card-title">{{ movie.title }}</h5>
-            <p class="card-text">{{ movie.releaseDate }}</p>
-            <div class="d-flex justify-content-between align-items-center">
-              <span class="badge bg-primary">{{ movie.rating.toFixed(1) }}</span>
-              <button class="btn btn-sm btn-danger" (click)="removeFromWatchlist(movie.id)">
-                <i class="fa fa-trash"></i> Remove
-              </button>
-            </div>
-          </div>
+
+      <div class="movie-list">
+      <div class="movie-card" *ngFor="let movie of movies">
+        <a [routerLink]="'/movie/' + movie.id">
+          <img [src]="movie.image" [alt]="movie.title" class="card-img-top">
+        </a>
+          <div class="movie-info">
+          <h4>{{ movie.title }}</h4>
+          <p class="date">{{ movie.releaseDate }}</p>
+          <!-- {{getStars(movie.vote_average)}} -->
+          <span class="stars">
+            <i *ngFor="let i of getStars(movie.vote_average) "
+               class="fa fa-star"
+               [ngClass]="{'text-warning': i < movie.rating, 'text-secondary': i >= movie.rating}">
+            </i>
+          </span>
+          <span class=" c-black">
+            {{ movie.vote_count }}
+          </span>
+          <span class="votes">{{ movie.votes }}</span>
+          <p class="description">{{ movie.overview | slice:0:100 }}...</p>
         </div>
+        <i class="fa fa-heart favorite text-warning"  (click)="removeFromWatchlist(movie.id)"></i>
       </div>
-    </div>
+    </div> 
   }
 </div>

@@ -56,7 +56,10 @@ export class MoviesListComponent implements OnInit {
       image: `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
       rating: movie.vote_average,
       id: movie.id,
-      isFavorite: this.movieService.isMovieInWatchlist(movie.id)
+      isFavorite: this.movieService.isMovieInWatchlist(movie.id),
+      overview: movie.overview,
+      vote_count: movie.vote_count,
+      vote_average: movie.vote_average,
     }));
     this.totalPages = data.total_pages;
     this.generatePageNumbers();

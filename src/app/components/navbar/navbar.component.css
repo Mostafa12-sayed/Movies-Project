@@ -22,3 +22,12 @@
     text-decoration: none;
     color: black;
   }
+
+  .badge{
+    position: absolute;
+    font-size: 12px;
+    top: 10px;
+    color: #0d0b0b;
+    background-color: white;
+    right: 19px;
+  }

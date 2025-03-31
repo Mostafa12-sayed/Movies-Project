@@ -1,16 +1,19 @@
 .movie-card {
-    width: 180px;
+    width: 190px;
     border-radius: 8px;
     overflow: hidden;
-    text-align: center;
+    text-align: left;
     font-family: Arial, sans-serif;
     transition: 0.3s;
     position: relative;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     cursor: pointer;
+  
 
     .poster {
       position: relative;
+      height:280px;
+      background-color: rgb(219, 219, 219);
       img {
         width: 100%;
         border-radius: 8px;
