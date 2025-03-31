@@ -1,32 +1,31 @@
 <div class="watchlist-container">
-    <h3>Watch list</h3>
-    @if (movies.length == 0) {
-      <div class="empty-watchlist">
-        <span class="icon"><i class="fa fa-heart"></i></span> <!-- Heart with a slash -->
-        
-        <p>No Movies in watch list</p>
-        <a  routerLink="/">Back to home</a>
-      </div>
-    }
-    @else {
-
-    <!-- <div class="movie-list">
-      <div class="movie-card" *ngFor="let movie of movies">
-        <img [src]="movie.image" [alt]="movie.title">
-        <div class="movie-info">
-          <h4>{{ movie.title }}</h4>
-          <p class="date">{{ movie.releaseDate }}</p>
-          <span class="stars">
-            <i *ngFor="let i of [0,1,2,3,4]" class="fa fa-star" 
-               [ngClass]="{'text-warning': i < movie.rating, 'text-secondary': i >= movie.rating}"></i>
-          </span>
-          <span class="votes">{{ movie.votes }}</span>
-          <p class="description">{{ movie.description | slice:0:100 }}...</p>
-        </div>
-        <i class="fa fa-heart favorite" [ngClass]="{'text-warning': movie.favorite, 'text-secondary': !movie.favorite}"></i>
-      </div>
-    </div> -->
+  <h3>Watchlist</h3>
+  @if (movies.length == 0) {
+    <div class="empty-watchlist">
+      <span class="icon"><i class="fa fa-heart"></i></span>
+      <p>No Movies in watchlist</p>
+      <a routerLink="/">Back to home</a>
+    </div>
   }
-
-  </div>
-  
+  @else {
+    <div class="movie-list">
+      <div *ngFor="let movie of movies" class="movie-card">
+        <div class="card position-relative" style="max-width: 18rem;">
+          <a [routerLink]="'/movie/' + movie.id">
+            <img [src]="movie.image" [alt]="movie.title" class="card-img-top">
+          </a>
+          <div class="card-body">
+            <h5 class="card-title">{{ movie.title }}</h5>
+            <p class="card-text">{{ movie.releaseDate }}</p>
+            <div class="d-flex justify-content-between align-items-center">
+              <span class="badge bg-primary">{{ movie.rating.toFixed(1) }}</span>
+              <button class="btn btn-sm btn-danger" (click)="removeFromWatchlist(movie.id)">
+                <i class="fa fa-trash"></i> Remove
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  }
+</div>

@@ -6,14 +6,16 @@
     font-family: Arial, sans-serif;
     transition: 0.3s;
     position: relative;
-  
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+
     .poster {
       position: relative;
       img {
         width: 100%;
         border-radius: 8px;
       }
-  
+
       .rating {
         position: absolute;
         bottom: 10px;
@@ -29,7 +31,7 @@
         font-weight: bold;
         font-size: 12px;
       }
-  
+
       .options {
         position: absolute;
         top: 8px;
@@ -39,7 +41,7 @@
         color: white;
       }
     }
-  
+
     .movie-info {
       margin-top: 8px;
       h5 {
@@ -53,7 +55,7 @@
         margin: 2px 0;
       }
     }
-  
+
     .actions {
       margin-top: 5px;
       cursor: pointer;
@@ -63,4 +65,3 @@
       }
     }
   }
-  

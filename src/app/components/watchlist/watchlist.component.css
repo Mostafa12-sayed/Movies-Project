@@ -1,121 +1,129 @@
 .watchlist-container {
-    padding: 20px;
-  }
-  
-  .movie-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-    gap: 20px;
-  }
-  
-  .movie-card {
-    display: flex;
-    align-items: center;
-    background: white;
-    padding: 15px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    position: relative;
-  }
-  
-  .movie-card img {
-    width: 80px;
-    height: 120px;
-    border-radius: 5px;
-  }
-  
-  .movie-info {
-    margin-left: 15px;
-    flex-grow: 1;
-  }
-  
-  .movie-info h4 {
-    margin: 0;
-    font-size: 18px;
-  }
-  
-  .movie-info .date {
-    font-size: 12px;
-    color: gray;
-  }
-  
-  .movie-info .stars {
-    color: gold;
-  }
-  
-  .movie-info .votes {
-    font-size: 12px;
-    color: gray;
-    margin-left: 5px;
-  }
-  
-  .movie-info .description {
-    font-size: 14px;
-    color: #666;
-  }
-  
-  .favorite {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    font-size: 20px;
-    cursor: pointer;
-  }
-  
+  padding: 20px;
+}
 
-  .empty-watchlist{
-    text-align: center;
-    font-size: 20px;
-    color: #666;
-    margin-top: 50px;
-  }
-  .empty-watchlist .icon{
-    font-size: 150px;
-    color: #bcbcbc;
-    position: relative;
-  }
-  .empty-watchlist .icon::before{
-    content: "/";
-    font-family: FontAwesome;
-    position: absolute;
-    top: -94px;
-    left: 46px;
-    right: 0px;
-    bottom: 0;
-    text-align: center;
-    font-size: 250px;
-    color: #bcbcbc;
-    z-index: 9999;
-    transform: rotate(25deg);
+/* Grid container for uniform layout */
+.movie-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
 
+/* Override inline max-width on .card to ensure full width */
+.movie-card .card {
+  max-width: 100% !important;
+  height: 100% !important;
+  display: flex;
+  flex-direction: column;
+}
 
-  }
-  .empty-watchlist .icon::after{
-    content: "/";
-    font-family: FontAwesome;
-    position: absolute;
-    top: -91px;
-    left: 67px;
-    right: 0px;
-    bottom: 0;
-    text-align: center;
-    font-size: 250px;
-    color: #ffffff;
-    z-index: 9999;
-    transform: rotate(25deg);
+/* Uniform card styling */
+.movie-card {
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  height: 450px; /* Fixed height for consistency */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+}
 
+/* Ensure images fill the card width and have a consistent height */
+.movie-card img {
+  width: 100%;
+  height: 200px; /* Set a fixed height for images */
+  object-fit: cover; /* Crop image to cover the area without distortion */
+  border-radius: 5px;
+}
 
-  }
-  .empty-watchlist h2{
-    font-size: 30px;
-    color: #0d0c0c;
-  }
-  .empty-watchlist p{
-    font-size: 20px;
-    color: #0d0c0c;
-  }
+/* Uniform movie information styling */
+.movie-info {
+  margin-top: 15px;
+  flex-grow: 1;
+}
 
-.empty-watchlist a{
+.movie-info h4 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.movie-info .date,
+.movie-info .votes {
+  font-size: 12px;
+  color: gray;
+}
+
+.movie-info .stars {
+  color: gold;
+}
+
+.movie-info .description {
+  font-size: 14px;
+  color: #666;
+  margin-top: 10px;
+}
+
+/* Favorite icon styling */
+.favorite {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* Empty watchlist styles (unchanged) */
+.empty-watchlist {
+  text-align: center;
+  font-size: 20px;
+  color: #666;
+  margin-top: 50px;
+}
+
+.empty-watchlist .icon {
+  font-size: 150px;
+  color: #bcbcbc;
+  position: relative;
+}
+
+.empty-watchlist .icon::before {
+  content: "/";
+  font-family: FontAwesome;
+  position: absolute;
+  top: -94px;
+  left: 46px;
+  font-size: 250px;
+  color: #bcbcbc;
+  z-index: 9999;
+  transform: rotate(25deg);
+}
+
+.empty-watchlist .icon::after {
+  content: "/";
+  font-family: FontAwesome;
+  position: absolute;
+  top: -91px;
+  left: 67px;
+  font-size: 250px;
+  color: #ffffff;
+  z-index: 9999;
+  transform: rotate(25deg);
+}
+
+.empty-watchlist h2 {
+  font-size: 30px;
+  color: #0d0c0c;
+}
+
+.empty-watchlist p {
+  font-size: 20px;
+  color: #0d0c0c;
+}
+
+.empty-watchlist a {
   font-size: 20px;
   color: #0d0c0c;
   background-color: rgb(253, 228, 5);
