@@ -8,17 +8,24 @@
       <h2>{{ movie.title }}</h2>
       <p class="text-muted">{{ movie.releaseDate }}</p>
       <div class="d-flex align-items-center mb-2">
-        <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9734;</span>
-        <span class="ms-2">{{ movie.rating }}</span>
+        <!-- <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9734;</span> -->
+        <span class="stars">
+          <i *ngFor="let i of stars" 
+             class="fa fa-star"
+             [ngClass]="{'text-warning': i < movie.rating, 'text-secondary': i >= movie.rating}">
+          </i>
+        </span>
+        <span class="ms-2">{{ movie.vote_count }}</span>
       </div>
-      <p>{{ movie.overview }}</p>
+      <p class="overview">{{ movie.overview }}</p>
       <div>
-        <span class="badge bg-warning text-dark me-2" *ngFor="let genre of movie.genres">{{ genre.name }}</span>
+        <span class="badge bg-warning text-dark me-2 mt-4" *ngFor="let genre of movie.genres">{{ genre.name }}</span>
       </div>
-      <div class="additional-info">
-        <p><strong>Duration:</strong> {{ movie.runtime }} Min.</p>
-        <p><strong>Languages:</strong> {{ movie.original_language }}</p>
+      <div class="additional-info d-flex gap-5 mt-4 mb-4">
+        <p><strong>Duration:</strong> {{ movie.duration }} Min.</p>
+        <p><strong>Languages:</strong> {{ movie.language }}</p>
       </div>
+      <a href="{{ movie.website }}" target="_blank" class=" website mt-4">Website <i class="fa fa-link"></i></a>
     </div>
   </div>
   
