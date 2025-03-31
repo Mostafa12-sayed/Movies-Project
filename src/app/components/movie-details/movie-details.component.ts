@@ -1,19 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MovieService } from '../../services/movie.service';
-import { NgFor, NgIf, UpperCasePipe } from '@angular/common';
+import { NgClass, NgFor, NgIf, UpperCasePipe } from '@angular/common';
 import { MovieCardComponent } from '../movie-card/movie-card.component';
 
 @Component({
   selector: 'app-movie-details',
   templateUrl: './movie-details.component.html',
   styleUrls: ['./movie-details.component.css'],
-  imports: [NgFor , MovieCardComponent],
+  imports: [NgFor , MovieCardComponent ,NgClass],
 })
 export class MovieDetailsComponent implements OnInit {
   movie: any;
   recommendations: any[] = [];
   movieId!: number;
+  stars: number[] = [];
 
   constructor(private route: ActivatedRoute, private movieService: MovieService) {}
 
@@ -29,6 +30,9 @@ export class MovieDetailsComponent implements OnInit {
 
   getMovieDetails(): void {
     this.movieService.getMovieDetails(this.movieId).subscribe(data => {
+      console.log(data);
+      this.getStars(data.vote_average);
+
       this.movie = {
         id: data.id,
         title: data.title,
@@ -41,6 +45,7 @@ export class MovieDetailsComponent implements OnInit {
         language: data.original_language,
         productionCompanies: data.production_companies,
         website: data.homepage,
+        vote_count : data.vote_count,
       };
       console.log(this.movie);
     });
@@ -61,5 +66,18 @@ export class MovieDetailsComponent implements OnInit {
         id: movie.id,
       }));
     });
+  }
+
+  getStars(value :number)
+  {
+      if(value ==0)
+      {
+         []
+      }
+      for(let i =2 ; i < value ; value-=2)
+      {
+        this.stars.push(i);
+        
+      }
   }
 }

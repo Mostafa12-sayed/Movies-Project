@@ -1,0 +1,32 @@
+<div class="watchlist-container">
+    <h3>Watch list</h3>
+    @if (movies.length == 0) {
+      <div class="empty-watchlist">
+        <span class="icon"><i class="fa fa-heart"></i></span> <!-- Heart with a slash -->
+        
+        <p>No Movies in watch list</p>
+        <a  routerLink="/">Back to home</a>
+      </div>
+    }
+    @else {
+
+    <!-- <div class="movie-list">
+      <div class="movie-card" *ngFor="let movie of movies">
+        <img [src]="movie.image" [alt]="movie.title">
+        <div class="movie-info">
+          <h4>{{ movie.title }}</h4>
+          <p class="date">{{ movie.releaseDate }}</p>
+          <span class="stars">
+            <i *ngFor="let i of [0,1,2,3,4]" class="fa fa-star" 
+               [ngClass]="{'text-warning': i < movie.rating, 'text-secondary': i >= movie.rating}"></i>
+          </span>
+          <span class="votes">{{ movie.votes }}</span>
+          <p class="description">{{ movie.description | slice:0:100 }}...</p>
+        </div>
+        <i class="fa fa-heart favorite" [ngClass]="{'text-warning': movie.favorite, 'text-secondary': !movie.favorite}"></i>
+      </div>
+    </div> -->
+  }
+
+  </div>
+  

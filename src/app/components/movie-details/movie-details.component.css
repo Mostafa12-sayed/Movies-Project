@@ -76,4 +76,21 @@
       }
     }
   }
+
+
+  .website{
+    background-color: transparent;
+    border: 1px solid #FFD700;
+    border-radius: 20px;
+    padding: 5px 15px;
+    text-decoration: none;
+    color: black;
+  }
   
+  .overview{
+    margin-top: 20px;
+    font-size: 18px;
+    line-height: 1.5;
+    font-weight: 600;
+    color: #333;
+  }
