@@ -3,6 +3,7 @@ import { Component ,inject } from '@angular/core';
 import { Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
+import { MovieService } from '../../services/movie.service';
 
 @Component({
   selector: 'app-movie-card',
@@ -14,11 +15,26 @@ export class MovieCardComponent {
   @Input() movie: any;
 
   private route = inject(ActivatedRoute);
-  // ngOnInit() {
-  //   console.log(this.movie);
-  // }
-    
-  toggleFavorite() {
-    this.movie.isFavorite = !this.movie.isFavorite;
+  constructor(private movieService: MovieService) {}
+
+  ngOnInit() {
+    if (this.movie) {
+      this.movie.isFavorite = this.movieService.isMovieInWatchlist(this.movie.id);
+    }
+  }
+
+  toggleFavorite(event?: Event) {
+    if (event) {
+      event.stopPropagation();
+      event.preventDefault();
+    }
+
+    this.movie.isFavorite = this.movieService.toggleWatchlist({
+      id: this.movie.id,
+      title: this.movie.title,
+      releaseDate: this.movie.releaseDate,
+      image: this.movie.image,
+      rating: this.movie.rating
+    });
   }
 }

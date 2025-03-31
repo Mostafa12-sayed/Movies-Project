@@ -5,75 +5,61 @@ import { NgFor, NgIf } from '@angular/common';
 import { Input } from '@angular/core';
 import { MovieService } from '../../services/movie.service';
 import { SearchBarComponent } from '../search-bar/search-bar.component';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-movie-list',
-  imports: [MovieCardComponent ,NgFor ,SearchBarComponent],
+  imports: [MovieCardComponent ,NgFor, NgIf ,SearchBarComponent],
   templateUrl: './movie-list.component.html',
   styleUrl: './movie-list.component.css'
 })
- 
+
 
 export class MoviesListComponent implements OnInit {
-  // movies: any[] = [];
-
-  // constructor(private movieService: MovieService) {}
-
-  // ngOnInit(): void {
-  //   this.generatePages();
-
-  //   this.movieService.getNowPlayingMovies().subscribe((data) => {
-  //     this.movies = data.results.map((movie: any) => ({
-  //       title: movie.title,
-  //       releaseDate: movie.release_date,
-  //       image: `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
-  //       rating: movie.vote_average,
-  //       isFavorite: false
-  //     }));
-  //   });
-  // }
-
-
-
-  // @Input() totalPages: number = 5;
-  // currentPage: number = 1;
-  // pages: number[] = [];
-
- 
-
-  // generatePages() {
-  //   this.pages = Array.from({ length: this.totalPages }, (_, i) => i + 1);
-  // }
-
-  // goToPage(page: number) {
-  //   if (page >= 1 && page <= this.totalPages) {
-  //     this.currentPage = page;
-  //   }
-  // }
   movies: any[] = [];
   currentPage: number = 1;
   totalPages: number = 1;
   pages: number[] = [];
+  isSearchMode: boolean = false;
+  searchQuery: string = '';
 
-  constructor(private movieService: MovieService) {}
+  constructor(
+    private movieService: MovieService,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
-    this.fetchMovies();
+    this.route.queryParams.subscribe(params => {
+      this.searchQuery = params['search'] || '';
+      this.currentPage = 1;
+      this.isSearchMode = !!this.searchQuery;
+      this.fetchMovies();
+    });
   }
 
   fetchMovies(): void {
-    this.movieService.getNowPlayingMovies(this.currentPage).subscribe((data) => {
-      this.movies = data.results.map((movie: any) => ({
-        title: movie.title,
-        releaseDate: movie.release_date,
-        image: `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
-        rating: movie.vote_average,
-        id: movie.id,
+    if (this.isSearchMode && this.searchQuery) {
+      this.movieService.searchMovies(this.searchQuery, this.currentPage).subscribe((data) => {
+        this.processMovieData(data);
+      });
+    } else {
+      this.movieService.getNowPlayingMovies(this.currentPage).subscribe((data) => {
+        this.processMovieData(data);
+      });
+    }
+  }
 
-      }));
-      this.totalPages = data.total_pages;
-      this.generatePageNumbers();
-    });
+  processMovieData(data: any): void {
+    this.movies = data.results.map((movie: any) => ({
+      title: movie.title,
+      releaseDate: movie.release_date,
+      image: `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
+      rating: movie.vote_average,
+      id: movie.id,
+      isFavorite: this.movieService.isMovieInWatchlist(movie.id)
+    }));
+    this.totalPages = data.total_pages;
+    this.generatePageNumbers();
   }
 
   nextPage(): void {

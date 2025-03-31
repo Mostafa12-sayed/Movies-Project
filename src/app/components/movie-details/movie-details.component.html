@@ -10,7 +10,7 @@
       <div class="d-flex align-items-center mb-2">
         <!-- <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9734;</span> -->
         <span class="stars">
-          <i *ngFor="let i of stars" 
+          <i *ngFor="let i of stars"
              class="fa fa-star"
              [ngClass]="{'text-warning': i < movie.rating, 'text-secondary': i >= movie.rating}">
           </i>
@@ -28,10 +28,10 @@
       <a href="{{ movie.website }}" target="_blank" class=" website mt-4">Website <i class="fa fa-link"></i></a>
     </div>
   </div>
-  
+
   <!-- Recommendations -->
   <h3 class="mt-5">Recommendations</h3>
- 
+
   <div class="d-flex flex-wrap justify-content-center gap-3 p-4">
     <app-movie-card
       *ngFor="let movie of recommendations"

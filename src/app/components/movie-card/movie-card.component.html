@@ -12,7 +12,7 @@
     </div>
     <div class="actions">
       <i class="fa" [ngClass]="{ 'fa-heart': movie.isFavorite, 'fa-heart-o': !movie.isFavorite }"
-        (click)="toggleFavorite()"></i>
+        (click)="toggleFavorite($event)"></i>
     </div>
   </div>
 
