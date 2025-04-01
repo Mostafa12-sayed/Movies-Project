@@ -1,0 +1,96 @@
+.movie-details {
+    padding: 20px;
+  }
+  
+  .movie-header {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+  }
+  
+  img {
+    width: 250px;
+    border-radius: 10px;
+  }
+  
+  .movie-info {
+    max-width: 600px;
+  }
+  
+  h1 {
+    margin: 0;
+  }
+  
+  .rating {
+    font-size: 20px;
+    font-weight: bold;
+    color: #FFD700;
+  }
+  
+  .tags {
+    margin: 10px 0;
+  
+    .genre {
+      display: inline-block;
+      padding: 5px 10px;
+      margin-right: 5px;
+      background: #ffcc00;
+      border-radius: 5px;
+    }
+  }
+  
+  .website-btn {
+    display: inline-block;
+    background: #007BFF;
+    padding: 10px 15px;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+  }
+  
+  h2 {
+    margin-top: 30px;
+  }
+  
+  .overview {
+    margin-top: 20px;
+    font-size: 18px;
+    line-height: 1.5;
+    font-weight: 600;
+    color: #333;
+  }
+  
+  .website {
+    background-color: transparent;
+    border: 1px solid #FFD700;
+    border-radius: 20px;
+    padding: 5px 15px;
+    text-decoration: none;
+    color: black;
+  }
+  
+  .recommendations {
+    display: flex;
+    overflow-x: auto;
+    gap: 15px;
+    padding: 10px 0;
+  }
+  
+  .recommendation-card {
+    width: 150px;
+    text-align: center;
+  }
+  
+  .recommendation-card img {
+    width: 100%;
+    border-radius: 8px;
+  }
+  
+  .rating-badge {
+    display: block;
+    background: #28a745;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+  }
+  
