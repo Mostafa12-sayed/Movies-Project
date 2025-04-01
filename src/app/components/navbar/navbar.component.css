@@ -31,3 +31,7 @@
     background-color: white;
     right: 19px;
   }
+
+  .dropdown-item{
+    cursor: pointer;
+  }

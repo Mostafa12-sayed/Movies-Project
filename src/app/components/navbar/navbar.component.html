@@ -1,25 +1,23 @@
-<nav class="navbar navbar-expand-lg navbar-light  px-5">
-    <a class="navbar-brand fw-bold text-dark"  routerLink="/">Movie App</a>
-    <button routerLink="/tv-shows" class="btn btn-dark">TV Shows</button>
-    <div class="ms-auto d-flex align-items-center">
-      <!-- Language Dropdown -->
-      <div class="dropdown me-4">
-        <button class="btn btn-light dropdown-toggle fw-bold" type="button" id="langDropdown" data-bs-toggle="dropdown">
-          En
-        </button>
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="#">English</a></li>
-          <li><a class="dropdown-item" href="#">French</a></li>
-          <li><a class="dropdown-item" href="#">Spanish</a></li>
-        </ul>
-      </div>
-
-      <!-- Watchlist Icon -->
-      <a  routerLink="/watchlist">
-      <div class="watchlist d-flex align-items-center" >
+<nav class="navbar navbar-expand-lg navbar-light px-5">
+  <a class="navbar-brand fw-bold text-dark" routerLink="/">{{ 'tvShows' | translate }}</a>
+  <button routerLink="/tv-shows" class="btn btn-dark">{{ 'tvShows' | translate }}</button>
+  <div class="ms-auto d-flex align-items-center">
+    <!-- Language Dropdown -->
+    <div class="dropdown me-4">
+      <button class="btn btn-light dropdown-toggle fw-bold" type="button" id="langDropdown" data-bs-toggle="dropdown">
+        {{ currentLang | uppercase }}
+      </button>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" (click)="changeLanguage('en')">{{ 'english' | translate }}</a></li>
+        <li><a class="dropdown-item" (click)="changeLanguage('ar')">{{ 'Arabic' | translate }}</a></li>
+      </ul>
+    </div>
+    <!-- Watchlist Icon -->
+    <a routerLink="/watchlist">
+      <div class="watchlist d-flex align-items-center">
         <i class="fa fa-heart text-dark me-1" style="font-size: 18px;"></i>
-        <span class="fw-semibold">watchlist @if(count> 0 ){<span class="badge badge-secondary">{{count}}</span>}</span>
+        <span class="fw-semibold">watchlist <span *ngIf="count > 0" class="badge badge-secondary">{{ count }}</span></span>
       </div>
     </a>
-    </div>
-  </nav>
+  </div>
+</nav>

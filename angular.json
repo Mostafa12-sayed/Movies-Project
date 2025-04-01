@@ -33,7 +33,12 @@
 
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
+              "node_modules/jquery/dist/jquery.min.js"
+
+
+            ]
           },
           "configurations": {
             "production": {
